@@ -1,0 +1,44 @@
+.large-hero {
+  position: relative;
+
+  &__text-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+  }
+
+  &__title {
+    font-weight: 300;
+    color: $mainBlue;
+    font-size: 4.8rem;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-weight: 300;
+    color: $mainBlue;
+    font-size: 2.9rem;
+    margin: 0;
+  }
+
+  &__description {
+    color: #FFF;
+    font-size: 1.875rem;
+    font-weight: 100;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+}
+/*
+width: 100% + text-align: center --> used to center the content horizontaly
+to center something vertically we can use top: 50% + transform \/
+with transformY() --> will let us position an element vertically relative to itself
+by using "&" as a selector postcss would use the main selector name, in this clear-view-escapes".large-hero"
+and we can use this to nest selectors while keep being making reference just to 1 clear-view-escapes
+*/
