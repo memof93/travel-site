@@ -450,6 +450,10 @@ template {
   display: none;
 }
 
+/*las puedo usar gracias al plug-in the gulp --> 'postcss-simple-vars'*/
+
+/*lo puedo usar gracias al plug-in the gulp --> 'postcss-mixins'*/
+
 body {
   font-family: 'Roboto', sans-serif;
   color:#333;
@@ -460,10 +464,24 @@ img {
   height: auto;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  color: #d59541;
+}
+
 .large-hero {
+  border-bottom: 10px solid #2f5572;
   position: relative;
 
 }
+
+.large-hero__image {
+    display: block;
+  }
 
 .large-hero__text-content {
     position: absolute;
@@ -477,26 +495,48 @@ img {
 .large-hero__title {
     font-weight: 300;
     color: #2f5572;
-    font-size: 4.8rem;
     margin: 0;
+    font-size: 2.4rem;
+  }
+
+@media (min-width: 530px) {
+
+.large-hero__title {
+      font-size: 4.8rem
+  }
   }
 
 .large-hero__subtitle {
     font-weight: 300;
     color: #2f5572;
-    font-size: 2.9rem;
+    font-size: 1.5rem;
     margin: 0;
+  }
+
+@media (min-width: 530px) {
+
+.large-hero__subtitle {
+        font-size: 2.9rem
+  }
   }
 
 .large-hero__description {
     color: #FFF;
-    font-size: 1.875rem;
+    font-size: 1.1rem;
     font-weight: 100;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
     max-width: 30rem;
     margin-left: auto;
     margin-right: auto;
 
+  }
+
+@media (min-width: 530px) {
+
+.large-hero__description {
+      font-size: 1.875rem
+
+  }
   }
 
 /*
@@ -520,6 +560,185 @@ and we can use this to nest selectors while keep being making reference just to 
   }
 
 .btn--large {
-    font-size: 1.25rem;
     padding: 1.1rem 1.9rem;
+  }
+
+@media (min-width: 530px) {
+
+.btn--large {
+      font-size: 1.25rem
+  }
+  }
+
+.wrapper {
+  overflow: hidden;
+  padding-left: 18px; /*espacio entre el contenido y el contenedor*/
+  padding-right: 18px;
+  max-width: 1236px;
+  /*el margin lo usamos para que el contenedor quede bien centrado en su contenedor superior (la pagina)*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper--medium {
+    max-width: 976px;
+    /*la imagen tiene un tamaño fija y si es menor al contenedor se acomoda a la izquierda
+    porque lo que está centrado es el contenedor. Al reducir el contenedor la imagen ocupa todo su espacio
+    y al centrarse el contenedor con el margin auto, la imagen queda en el centro*/
+  }
+
+/*any wrapper inside another wrapper will have padding left/right 0*/
+
+.wrapper .wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+.wrapper--b-margin {
+    margin-bottom: 1rem;
+  }
+
+@media (min-width: 530px) {
+
+.wrapper--b-margin {
+      margin-bottom: 3.875rem
+  }
+  }
+
+.page-section {
+  padding: 1.2rem 0;
+
+}
+
+/*just to add the padding to the top and bottom */
+
+@media (min-width: 800px) {
+
+.page-section {
+    padding: 4.5rem 0
+
+}
+  }
+
+.page-section--blue {
+    background-color: #2f5572;
+    color: #FFF;
+  }
+
+.headline {
+  font-size: 1.9rem;
+  font-weight: 300;
+  color: #2f5572;
+}
+
+/*atSmall is min-width 500px, so by not stating it for smaller devices the padding would be 1rem*/
+
+@media (min-width: 530px) {
+
+.headline {
+    font-size: 2.875rem
+}
+  }
+
+.headline--centered {
+    text-align: center;
+  }
+
+.headline--orange {
+    color: #d59541;
+  }
+
+.headline--small {
+    font-size: 1.2rem;
+
+  }
+
+@media (min-width: 530px) {
+
+.headline--small {
+      font-size: 1.87rem
+
+  }
+  }
+
+.headline--narrow {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.headline--light {
+    font-weight: 100;
+  }
+
+.headline--b-margin-small {
+    margin-bottom: .5em;
+  }
+
+.headline--b-margin-large {
+    margin-bottom: 1.6em;
+  }
+
+.headline--no-t-margin {
+    margin-top: 0;
+  }
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+.row--gutters {
+    margin-right: -65px;
+  }
+
+.row--gutters > div {
+    padding-right: 65px;
+  }
+
+.row__b-margin-until-medium {
+    margin-bottom: 1rem;
+  }
+
+@media (min-width: 800px) {
+
+    .row__b-margin-until-medium {
+      margin-bottom: 0;
+    }
+
+    .row__medium-4 {
+      float: left;
+      width: 33.33%;
+    }
+
+    .row__medium-4-larger {
+      width: 37%;
+    }
+
+    .row__medium-8 {
+      float: left;
+      width: 66.66%;
+    }
+
+    .row__medium-8-smaller {
+      width: 63%;
+    }
+  }
+
+.generic-content-container p {
+    line-height: 1.65;
+
+    margin: 1.8rem 0;
+  }
+
+@media (min-width: 530px) {
+
+.generic-content-container p {
+      font-size: 1.125rem
+  }
+  }
+
+.generic-content-container p a {
+    font-weight: 700;
   }
