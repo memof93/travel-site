@@ -1,6 +1,7 @@
 .wrapper {
   overflow: hidden;
-  padding-left: 18px; /*espacio entre el contenido y el contenedor*/
+  /*espacio entre el contenido y el contenedor*/
+  padding-left: 18px;
   padding-right: 18px;
   max-width: 1236px;
   /*el margin lo usamos para que el contenedor quede bien centrado en su contenedor superior (la pagina)*/
@@ -13,7 +14,27 @@
     porque lo que está centrado es el contenedor. Al reducir el contenedor la imagen ocupa todo su espacio
     y al centrarse el contenedor con el margin auto, la imagen queda en el centro*/
   }
+  &--no-padding-until-medium {
+    padding-left: 0;
+    padding-right: 0;
 
+    @mixin atMedium {
+      /*espacio entre el contenido y el contenedor*/
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+  }
+
+  &--no-padding-until-large {
+    padding-left: 0;
+    padding-right: 0;
+
+    @mixin atLarge {
+      /*espacio entre el contenido y el contenedor*/
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+  }
   /*any wrapper inside another wrapper will have padding left/right 0*/
   .wrapper {
     padding-left: 0;
