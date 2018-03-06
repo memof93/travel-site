@@ -572,7 +572,8 @@ and we can use this to nest selectors while keep being making reference just to 
 
 .wrapper {
   overflow: hidden;
-  padding-left: 18px; /*espacio entre el contenido y el contenedor*/
+  /*espacio entre el contenido y el contenedor*/
+  padding-left: 18px;
   padding-right: 18px;
   max-width: 1236px;
   /*el margin lo usamos para que el contenedor quede bien centrado en su contenedor superior (la pagina)*/
@@ -585,6 +586,34 @@ and we can use this to nest selectors while keep being making reference just to 
     /*la imagen tiene un tamaño fija y si es menor al contenedor se acomoda a la izquierda
     porque lo que está centrado es el contenedor. Al reducir el contenedor la imagen ocupa todo su espacio
     y al centrarse el contenedor con el margin auto, la imagen queda en el centro*/
+  }
+
+.wrapper--no-padding-until-medium {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+@media (min-width: 800px) {
+
+.wrapper--no-padding-until-medium {
+      /*espacio entre el contenido y el contenedor*/
+      padding-left: 18px;
+      padding-right: 18px
+  }
+  }
+
+.wrapper--no-padding-until-large {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+@media (min-width: 1010px) {
+
+.wrapper--no-padding-until-large {
+      /*espacio entre el contenido y el contenedor*/
+      padding-left: 18px;
+      padding-right: 18px
+  }
   }
 
 /*any wrapper inside another wrapper will have padding left/right 0*/
@@ -608,6 +637,7 @@ and we can use this to nest selectors while keep being making reference just to 
 .page-section {
   padding: 1.2rem 0;
 
+
 }
 
 /*just to add the padding to the top and bottom */
@@ -617,12 +647,47 @@ and we can use this to nest selectors while keep being making reference just to 
 .page-section {
     padding: 4.5rem 0
 
+
 }
+  }
+
+.page-section--no-b-padding-until-medium {
+    padding-bottom: 0;
+  }
+
+@media (min-width: 800px) {
+
+.page-section--no-b-padding-until-medium {
+      padding-bottom: 4.5rem
+  }
+  }
+
+.page-section--no-b-padding-until-large {
+    padding-bottom: 0;
+  }
+
+@media (min-width: 1010px) {
+
+.page-section--no-b-padding-until-large {
+      padding-bottom: 4.5rem
+  }
   }
 
 .page-section--blue {
     background-color: #2f5572;
     color: #FFF;
+  }
+
+.page-section--testimonials {
+    background-color: #E0E6EF;
+  }
+
+@media (min-width: 1010px) {
+
+.page-section--testimonials {
+      background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
+      background-size: cover
+  }
   }
 
 .headline {
@@ -691,12 +756,20 @@ and we can use this to nest selectors while keep being making reference just to 
     display: table;
   }
 
+.row--t-padding {
+    padding-top: 80px;
+  }
+
 .row--gutters {
     margin-right: -65px;
   }
 
 .row--gutters-large {
     margin-right: -100px;
+  }
+
+.row--gutters-small {
+    margin-right: -45px;
   }
 
 /*all of the columns*/
@@ -708,6 +781,12 @@ and we can use this to nest selectors while keep being making reference just to 
 .row--gutters-large > div {
     padding-right: 100px;
   }
+
+.row--gutters-small > div {
+    padding-right: 45px;
+  }
+
+/* usado para poner un margen debajo de la imagen de penny y arriba del texto (solo para smartphone)*/
 
 .row__b-margin-until-medium {
     margin-bottom: 1rem;
@@ -742,6 +821,75 @@ and we can use this to nest selectors while keep being making reference just to 
       width: 63%;
     }
   }
+
+@media (min-width: 1010px) {
+
+    .row__b-margin-until-large{
+      margin-bottom: 0;
+    }
+
+    .row__large-4 {
+      float: left;
+      width: 33.33%;
+    }
+
+    .row__large-4-larger {
+      width: 37%;
+    }
+
+    .row__large-6 {
+      float: left;
+      width: 50%;
+    }
+
+    .row__large-8 {
+      float: left;
+      width: 66.66%;
+    }
+
+    .row__large-8-smaller {
+      width: 63%;
+    }
+  }
+
+/*Begin Equal Height Rules*/
+
+/*el contenedor de la fila*/
+
+@media (min-width: 800px) {
+
+.row--equal-height-at-medium {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+  }
+  }
+
+/*this will select the columns*/
+
+.row--equal-height-at-medium > div { /*row__equal-height-at-medium > div*/
+       /*stop being floated and start being flex so it adapts to the size of the larger*/
+      float: none;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+@media (min-width: 1010px) {
+
+.row--equal-height-at-large {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+  }
+  }
+
+.row--equal-height-at-large > div {
+      float: none;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
 
 .generic-content-container p {
     font-weight: 300;
@@ -782,16 +930,24 @@ and we can use this to nest selectors while keep being making reference just to 
     margin-left: auto;
     margin-right: auto;
     margin-bottom: .6rem;
+
   }
 
 @media (min-width: 530px) {
 
 .section-title__icon {
+      position: relative;
+      top: 8px;
       margin-right: .5rem;
       margin-left: 0;
       margin-bottom: 0;
       display: inline-block
+
   }
+  }
+
+.section-title--blue {
+    color: #2f5572;
   }
 
 .feature-item {
@@ -836,4 +992,51 @@ and we can use this to nest selectors while keep being making reference just to 
       margin-top: 1em;
       text-align: left
   }
+  }
+
+.testimonial {
+  background-color: rgba(255,255,255, .8);
+  padding: 0 18px 1px 18px;
+  margin-bottom: 98px;
+}
+
+@media (min-width: 1010px) {
+
+.testimonial {
+    /*El bottom padding solo afecta al texto con el contenedor porque en los demás elementos se sobreescribe*/
+    padding: 0 1.8125rem 1px 1.8125rem;
+    margin-bottom: 0
+}
+  }
+
+.testimonial__photo {
+    /*to have a circle the border-radius has to be the half of the width and height*/
+    border-radius: 80px;
+    overflow: hidden;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto -80px auto;
+    position: relative;
+    top: -80px;
+    border: 6px solid rgba(255,255,255, .8);
+  }
+
+.testimonial__title {
+    color: #2f5572;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+.testimonial__subtitle {
+    color: #d59541;
+    text-align: center;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    margin: .25rem 0 1rem 0;
+  }
+
+.testimonial--last {
+    margin-bottom: 0;
   }
