@@ -4,11 +4,12 @@ autoprefixer = require('autoprefixer'), //para que se agreguen las propiedades d
 cssvars = require('postcss-simple-vars'), //para poder usar variables en el css
 nested = require('postcss-nested'), //allows you to nest properties in cs,
 cssImport = require('postcss-import'),
-mixins = require('postcss-mixins'); //allows to define media
+mixins = require('postcss-mixins'), //allows to define media
+hexrgba = require('postcss-hexrgba');
 
 gulp.task('styles', function() {
-  return gulp.src('./app/assets/styles/styles.css')
-    .pipe(postcss([cssImport, mixins, cssvars, nested, autoprefixer]))
+  return gulp.src('./app/assets/styles/styles.css') 
+    .pipe(postcss([cssImport, mixins, cssvars, nested, hexrgba, autoprefixer]))
     .on('error', function(errorInfo) {
       console.log(errorInfo.toString());
       this.emit('end'); //to avoid 'watch' to stop when a syntax error occurs in the css
