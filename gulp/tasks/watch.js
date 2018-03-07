@@ -4,11 +4,16 @@ browserSync = require('browser-sync').create();
 
 //WATCH
 gulp.task('watch', function() {
+  /*Esta es la configuración usada para poder mostrar cierto archivo/pagina en
+  los dispositivos que accedan al las URLs(local y externa)
+  */
   browserSync.init({
     notify: false,
     server: {
+      //Aqui puedo definir index: otroarchivo.html. Por default agarra el index.html
       baseDir: "app"
     }
+    //Aqui podría definir un proxy que apunte a "mylocal.dev" o a una url
   });
   watch('./app/index.html', function(){
     browserSync.reload();
