@@ -5,8 +5,7 @@ browserSync = require('browser-sync').create();
 //WATCH
 gulp.task('watch', function() {
   /*Esta es la configuración usada para poder mostrar cierto archivo/pagina en
-  los dispositivos que accedan al las URLs(local y externa)
-  */
+  los dispositivos que accedan al las URLs(local y externa)*/
   browserSync.init({
     notify: false,
     server: {
