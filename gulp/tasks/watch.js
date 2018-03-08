@@ -17,10 +17,14 @@ gulp.task('watch', function() {
   watch('./app/index.html', function(){
     browserSync.reload();
   });
+  //instead of reloading the page everytime a css file changes, we inject them
   watch('./app/assets/styles/**/*.css', function() {
     gulp.start('cssInject');
     //gulp.start('styles'); // it runs all our postcss tasks
   });
+  watch('./app/assets/scripts/**/*.js', function() {
+    gulp.start('scriptsRefresh');
+  })
 });
 
 /* when injecting 'styles' task the css would be converted and ready to display the
@@ -28,4 +32,8 @@ changes before the start of the 'cssInject task'(which is for applying the chang
 gulp.task('cssInject', ['styles'], function() {
   return gulp.src('./app/temp/styles/styles.css')
     .pipe(browserSync.stream());
+});
+//until the js bundle is generated (with scripts -> webpack) it doesn't refresh the page
+gulp.task('scriptsRefresh', ['scripts'], function() {
+  browserSync.reload();
 });
