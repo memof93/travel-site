@@ -591,9 +591,15 @@ and we can use this to nest selectors while keep being making reference just to 
 
 .wrapper--medium {
     max-width: 976px;
-    /*la imagen tiene un tamaño fija y si es menor al contenedor se acomoda a la izquierda
+    /*la imagen tiene un tamaño fijo y si es menor al contenedor se acomoda a la izquierda
     porque lo que está centrado es el contenedor. Al reducir el contenedor la imagen ocupa todo su espacio
     y al centrarse el contenedor con el margin auto, la imagen queda en el centro*/
+  }
+
+/*utilizada para centar el texto del modal*/
+
+.wrapper--narrow {
+    max-width: 470px;
   }
 
 .wrapper--no-padding-until-medium {
@@ -920,12 +926,14 @@ and we can use this to nest selectors while keep being making reference just to 
   font-size: 2.55rem;
   font-weight: 300;
   text-align: center;
+
 }
 
 @media (min-width: 530px) {
 
 .section-title {
     font-size: 3.75rem
+
 }
   }
 
@@ -933,12 +941,20 @@ and we can use this to nest selectors while keep being making reference just to 
     font-weight: 500;
   }
 
+.section-title--blue {
+    color: #2f5572;
+  }
+
+.section-title--less-margin {
+    margin-bottom: 1.3rem;
+    margin-top: 0;
+  }
+
 .section-title__icon {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: .6rem;
-
   }
 
 @media (min-width: 530px) {
@@ -950,12 +966,7 @@ and we can use this to nest selectors while keep being making reference just to 
       margin-left: 0;
       margin-bottom: 0;
       display: inline-block
-
   }
-  }
-
-.section-title--blue {
-    color: #2f5572;
   }
 
 .feature-item {
@@ -1431,3 +1442,102 @@ background-image: url('/temp/sprite/css/sprite-69f19c2e.svg');*/
     -webkit-transform: scale(1);
             transform: scale(1);
   }
+
+.modal {
+  position: fixed;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, .94);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+
+}
+
+/*modal inicialmente oculto, hasta que con jquery se agregue la clase modal--is-visible*/
+
+.modal--is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+
+/*selecciona el contenido del modal, sin el boton(X) para cerrar*/
+
+.modal__inner {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+
+/*modifica el texto del modal*/
+
+.modal__description {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+/*boton(X) para cerrar el modal*/
+
+.modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    -webkit-transform: scaleX(1.2);
+            transform: scaleX(1.2);
+    -webkit-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+    color: #2f5572;
+    cursor: pointer;
+  }
+
+.modal__close:hover {
+      color: #d59541;
+    }
+
+.social-icons {
+  text-align: center;
+}
+
+/*contenedor del icon*/
+
+.social-icons__icon {
+    background-color: #d59541;
+    display: inline-block;
+    position: relative;
+    margin: 0 5px 5px 5px;
+    width: 33%;
+    height: 72px;
+  }
+
+@media (min-width: 530px) {
+
+.social-icons__icon {
+      margin: 0 5px;
+      width: 72px
+  }
+  }
+
+/*clase icon dentro del contenedor*/
+
+.social-icons__icon .icon {
+      display: block;
+      position: absolute;
+      /*el % usado en top y left es respecto al contenedor y el del translate es respecto al tamaño del objeto*/
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+    }
