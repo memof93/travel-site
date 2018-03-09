@@ -1,0 +1,28 @@
+.social-icons {
+  text-align: center;
+
+/*contenedor del icon*/
+  &__icon {
+    background-color: $mainOrange;
+    display: inline-block;
+    position: relative;
+    margin: 0 5px 5px 5px;
+    width: 33%;
+    height: 72px;
+
+    @mixin atSmall {
+      margin: 0 5px;
+      width: 72px;
+    }
+
+/*clase icon dentro del contenedor*/
+    .icon {
+      display: block;
+      position: absolute;
+      /*el % usado en top y left es respecto al contenedor y el del translate es respecto al tamaño del objeto*/
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

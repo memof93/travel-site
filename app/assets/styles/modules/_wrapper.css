@@ -10,10 +10,15 @@
 
   &--medium {
     max-width: 976px;
-    /*la imagen tiene un tamaño fija y si es menor al contenedor se acomoda a la izquierda
+    /*la imagen tiene un tamaño fijo y si es menor al contenedor se acomoda a la izquierda
     porque lo que está centrado es el contenedor. Al reducir el contenedor la imagen ocupa todo su espacio
     y al centrarse el contenedor con el margin auto, la imagen queda en el centro*/
   }
+/*utilizada para centar el texto del modal*/
+  &--narrow {
+    max-width: 470px;
+  }
+
   &--no-padding-until-medium {
     padding-left: 0;
     padding-right: 0;
