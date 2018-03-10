@@ -25,7 +25,7 @@ class Modal {
 
   openModal() {
     this.modal.addClass("modal--is-visible");
-    return false; //avoid doing the action of the link
+    return false; //avoid doing the action of the button link hrf="#"
   }
 
   closeModal() {
