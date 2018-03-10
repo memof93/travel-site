@@ -8,7 +8,7 @@ mixins = require('postcss-mixins'), //allows to define media
 hexrgba = require('postcss-hexrgba');
 
 gulp.task('styles', function() {
-  return gulp.src('./app/assets/styles/styles.css') 
+  return gulp.src('./app/assets/styles/styles.css')
     .pipe(postcss([cssImport, mixins, cssvars, nested, hexrgba, autoprefixer]))
     .on('error', function(errorInfo) {
       console.log(errorInfo.toString());

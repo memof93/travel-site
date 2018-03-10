@@ -5,6 +5,10 @@ Instead edit gulp/templates/sprite*/
   .icon {
     background-image: url('/assets/images/sprites/{{{sprite}}}');
   }
+
+  .no-svg .icon {
+    background-image: url('/assets/images/sprites/{{#replaceSvgWithPng}}{{{sprite}}}{{/replaceSvgWithPng}}');
+  }
   {{/first}}
 
   .icon--{{base}} {
@@ -18,3 +22,4 @@ we do it this way because the name of the file changes every time we run the scr
 It is a loop and creates this css selector for each element(svg icon)
 WHY THE URL DOESN'T INCLUDE ./app at the begining?
 background-image: url('/temp/sprite/css/{{{sprite}}}');*/
+/*replaceSvgWithPng is a filter*/

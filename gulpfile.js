@@ -7,5 +7,6 @@ a .js file for our application it wouldn't be recognized by the browser
 require('./gulp/tasks/styles');
 require('./gulp/tasks/watch');
 require('./gulp/tasks/sprites');
-//-scripts- it works here but maybe it should be over the watch task 
+//-scripts- it works here but maybe it should be over the watch task
 require('./gulp/tasks/scripts');
+require('./gulp/tasks/modernizr');

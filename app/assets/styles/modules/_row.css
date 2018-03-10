@@ -99,7 +99,11 @@
   }
 
   /*Begin Equal Height Rules*/
-  &--equal-height-at-medium { /*el contenedor de la fila*/
+  /*this flexbox class would be added by the modernizr gulp task, when the browser supports flexbox
+  sin la clase flexbox cuando un browser no soporte flex sólo se aplicaría float: none y con eso las
+  columnas no se podrían stackear a la izquierda por lo que se verían en una misma columna todas
+  con la clase se asegura de que únicamente cuando si lo soporte se apliquen los estilos*/
+  .flexbox &--equal-height-at-medium { /*el contenedor de la fila*/
     @mixin atMedium {
       display: flex;
     }
@@ -111,7 +115,7 @@
     }
   }
 
-  &--equal-height-at-large {
+  .flexbox &--equal-height-at-large {
     @mixin atLarge{
       display: flex;
     }
