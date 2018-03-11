@@ -12,14 +12,14 @@ gulp.task('previewDist', function() {
   browserSync.init({
     notify: false,
     server: {
-      baseDir: "dist"
+      baseDir: "docs"
     }
   });
 });
 
 //used to delete the distributable folder. should be called at the begining of every build
 gulp.task('deleteDistFolder', ['icons'], function() {
-  return del('./dist');
+  return del('./docs');
 });
 
 //used to add other files excluding the html, images, styles, scripts and the temps
@@ -35,7 +35,7 @@ gulp.task('copyGeneralFiles', ['deleteDistFolder'], function() {
     '!./app/temp/**'
   ];
   return gulp.src(pathsToCopy)
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./docs'))
 });
 
 /*used to include just the necesary images and to optimize them.
@@ -48,7 +48,7 @@ gulp.task('optimizeImages', ['deleteDistFolder'], function() {
       interlaced: true, //would help with any gif image that we have
       multipass: true //would help with our svg files
     }))
-    .pipe(gulp.dest('./dist/assets/images'));
+    .pipe(gulp.dest('./docs/assets/images'));
 });
 
 /*by loading deleteDistFolder first we assure that the icons are loaded first (loaded in deleteDistFolder)
@@ -65,7 +65,7 @@ gulp.task('usemin',['styles', 'scripts'],  function() {
       css: [function() {return rev()}, function() {return cssnano()}],
       js: [function() {return rev()}, function() {return uglify()}]
     }))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./docs'));
 });
 
 //build would be the shortcut runned in the command line that would trigger to call other tasks
